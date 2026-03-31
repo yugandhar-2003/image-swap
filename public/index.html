@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Thumbnail Face Swap</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>AI Thumbnail Face Swap</h1>
+      <p class="subtitle">Upload a thumbnail and portrait, then generate a realistic face swap with Gemini.</p>
+
+      <form id="swapForm" class="card">
+        <div class="grid">
+          <label class="uploader" id="thumbnailDrop">
+            <span>Upload Thumbnail</span>
+            <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required />
+            <img id="thumbnailPreview" alt="Thumbnail preview" hidden />
+          </label>
+
+          <label class="uploader" id="portraitDrop">
+            <span>Upload Portrait</span>
+            <input type="file" id="portrait" name="portrait" accept="image/*" required />
+            <img id="portraitPreview" alt="Portrait preview" hidden />
+          </label>
+        </div>
+
+        <label for="instructions">Optional Instructions</label>
+        <textarea
+          id="instructions"
+          name="instructions"
+          rows="4"
+          placeholder="e.g., Make it more realistic, keep hairstyle the same, and match warm lighting"
+        ></textarea>
+
+        <button id="generateBtn" type="submit">Generate</button>
+      </form>
+
+      <div id="loader" class="loader" hidden></div>
+      <p id="error" class="error" hidden></p>
+
+      <section id="resultSection" class="card" hidden>
+        <h2>Generated Result</h2>
+        <img id="resultImage" alt="Face swap output" />
+        <a id="downloadBtn" class="download" download="face-swap-result.png">Download Image</a>
+      </section>
+
+      <section id="historySection" class="card" hidden>
+        <h2>Recent Generations</h2>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
